@@ -1,0 +1,3 @@
+[submodule "build/src"]
+	path = build/src
+	url = https://github.com/cloudflare/lol-html.git

@@ -14,7 +14,7 @@ var ErrCannotGetErrorMessage = errors.New("cannot get error message from underly
 // You should make sure there is an error when calling this, or the function interprets
 // the NULL error message obtained as ErrCannotGetErrorMessage.
 func getError() error {
-	errC := (*str)(C.lol_html_take_last_error())
+	errC := (str)(C.lol_html_take_last_error())
 	defer errC.Free()
 	if errMsg := errC.String(); errMsg != "" {
 		return errors.New(errMsg)

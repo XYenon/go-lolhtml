@@ -53,10 +53,10 @@ func (e *Element) AttributeValue(name string) (string, error) {
 	nameC := C.CString(name)
 	defer C.free(unsafe.Pointer(nameC))
 	nameLen := len(name)
-	valueC := (*str)(C.lol_html_element_get_attribute((*C.lol_html_element_t)(e), nameC, C.size_t(nameLen)))
+	valueC := (str)(C.lol_html_element_get_attribute((*C.lol_html_element_t)(e), nameC, C.size_t(nameLen)))
 	defer valueC.Free()
 	// always check error, so not using getError()
-	errC := (*str)(C.lol_html_take_last_error())
+	errC := (str)(C.lol_html_take_last_error())
 	defer errC.Free()
 	errMsg := errC.String()
 	if errMsg != "" {
